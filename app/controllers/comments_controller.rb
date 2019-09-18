@@ -26,6 +26,20 @@ class CommentsController < ApplicationController
       end
      end
 
+     def edit 
+        comment = Comment.find_by(id: params[:id])  
+      end
+
+      def update 
+        comment = Comment.find_by(id: params[:id])
+        
+        if comment.update(comment_params)
+        render json: comment
+        else
+            render json: {error: "something wrong happened"}
+        end
+      end
+
   
     def destroy
       @comment = Comment.find_by(id: params[:id])

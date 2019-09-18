@@ -10,7 +10,7 @@ class PlansController < ApplicationController
 
     def show
         plan = Plan.find_by(id: params[:id])
-        render json: plan.to_json:only => [:id, :topic, :objective, :direct, :guided, :independent, :cfu]
+        render json: plan
      end
 
      def create

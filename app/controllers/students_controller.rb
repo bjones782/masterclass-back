@@ -31,13 +31,13 @@ class StudentsController < ApplicationController
 
   
     def destroy
-      @student = Student.find_by(id: params[:id])
-      @student.destroy
+      student = Student.find_by(id: params[:id])
+      student.destroy
     end
 
      private
       def student_params
-        params.require(:student).permit(:name, :mastered, :almost, :notyet, :user_id)
+        params.require(:student).permit(:id, :name, :mastered, :almost, :notyet, :user_id)
       end
 
 end
