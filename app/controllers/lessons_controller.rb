@@ -2,8 +2,10 @@ class LessonsController < ApplicationController
     skip_before_action :authorized
 
     def index
+      
         @lessons = Lesson.all 
         render json: @lessons
+        # byebug
         # render json: @lessons.to_json( :include => {
         #     :students => { :only => [:id, :name, :mastered, :almost, :notyet] },
         #     :standards => { :only => [:id, :notation, :description, :masterylevel]} 
@@ -60,6 +62,6 @@ class LessonsController < ApplicationController
      private
       def lesson_params
         # params.require(:lesson).permit(:id, :mastery, standard_id: [], student_id: [])
-        params.require(:lesson).permit(:mastery, :standard_id, :student_id)
+        params.permit(:mastery, :standard_id, :student_id)
       end
 end
